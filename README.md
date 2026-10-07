@@ -1,314 +1,169 @@
-# GreenMarket 🌿
-**GreenMarket** is a backend API for smart inventory management designed for local producers and small businesses. It allows business owners to register their products, track stock levels, and receive automatic alerts when stock is running low — all secured with JWT authentication and role-based access control.
+# 🌱 EcoTask
+
+## Startup Digital: Cultura, Herramientas e Innovación
+
+EcoTask es una plataforma digital diseñada para ayudar a estudiantes y equipos de trabajo a organizar actividades, administrar recursos y visualizar su progreso.
+
+El proyecto combina desarrollo de software, organización colaborativa, automatización y una cultura de reconocimiento.
 
 ---
 
-## Team
-- Diego Alberto Pérez Navarro
-- Jorge Alejandro Álvarez Gómez
-- Christopher De Luna Alcalá
+##  Objetivo
+
+Crear una herramienta digital que facilite la organización de actividades y permita a los equipos trabajar de manera colaborativa, organizada y medible.
 
 ---
 
-## Technologies Used
-- Node.js
-- Express.js
-- MongoDB Atlas
-- Mongoose
-- JSON Web Token (JWT)
-- bcryptjs
-- Swagger (swagger-jsdoc + swagger-ui-express)
-- dotenv
+##  Problema
+
+Los equipos de estudiantes pueden tener dificultades para:
+
+* Organizar sus actividades.
+* Distribuir responsabilidades.
+* Dar seguimiento al progreso.
+* Mantener una comunicación efectiva.
+* Reconocer el trabajo de sus integrantes.
+
+EcoTask busca solucionar estos problemas mediante herramientas digitales.
 
 ---
 
-## Installation Guide
+##  Propuesta de valor
 
-### 1. Clone the repository
+EcoTask permite administrar información mediante una API y proporciona una base tecnológica que puede conectarse posteriormente con una aplicación web o móvil.
+
+La plataforma utiliza autenticación, control de roles y administración de información.
+
+---
+
+##  Tecnologías
+
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* JSON Web Token
+* bcryptjs
+* Swagger
+* dotenv
+* GitHub Actions
+
+---
+
+##  Equipo
+
+| Integrante                  | Rol          |
+| --------------------------- | ------------ |
+| Rubí Salas Martín del Campo | Coordinación |
+| Jorge                       | Tecnología   |
+| Integrante 3                | Diseño       |
+| Integrante 4                | Comunicación |
+
+---
+
+##  Seguridad
+
+La API utiliza JWT para autenticar usuarios y controlar el acceso a determinadas operaciones.
+
+Los usuarios pueden tener diferentes roles y los administradores cuentan con permisos adicionales.
+
+Las variables sensibles se almacenan mediante variables de entorno.
+
+---
+
+##  Flujo de trabajo
+
+Nuestro flujo de trabajo es:
+
+**Pendiente → En progreso → Revisión → Aprobado → Completado**
+
+Los cambios importantes deben ser revisados antes de integrarse al proyecto.
+
+---
+
+##  Automatización
+
+GitHub Actions ejecuta automáticamente una validación del proyecto cuando se realizan cambios.
+
+La automatización permite comprobar que los archivos principales del proyecto existan y que la estructura básica se mantenga.
+
+---
+
+## Métricas
+
+El proyecto será monitoreado mediante UptimeRobot para comprobar la disponibilidad del servicio publicado.
+
+---
+
+##  Cultura de reconocimiento
+
+El equipo utiliza un canal de Discord llamado `#kudos` para reconocer las contribuciones de los integrantes.
+
+---
+
+## ▶ Instalación
+
+Clonar el repositorio:
+
 ```bash
-git clone https://github.com/Yorchky/GreenMarket-API
+git clone URL_DEL_REPOSITORIO
 ```
 
-### 2. Enter the project folder
+Entrar al proyecto:
+
 ```bash
-cd GreenMarket
+cd EcoTask
 ```
 
-### 3. Install dependencies
+Instalar dependencias:
+
 ```bash
 npm install
 ```
-This command installs all required libraries defined in **package.json**.
 
----
-
-## Environment Variables
-Create a `.env` file in the root of the project with the following variables:
+Crear un archivo `.env`:
 
 ```env
 PORT=4000
-MONGO_URI=your_mongodb_atlas_connection_string
-JWT_TOKEN_SECRET=your_secret_key
+MONGO_URI=TU_MONGO_URI
+JWT_TOKEN_SECRET=TU_SECRETO
 ```
 
-> ⚠️ The real `.env` file should **NOT be uploaded to GitHub**. It is listed in `.gitignore`.
-
----
-
-## Running the Project
+Ejecutar:
 
 ```bash
 node index.js
 ```
 
-The API will run on:
-```
+La API estará disponible en:
+
+```text
 http://localhost:4000
 ```
 
-Swagger documentation available at:
-```
+La documentación Swagger estará disponible en:
+
+```text
 http://localhost:4000/api-docs
 ```
 
 ---
 
-## Project Structure
+##  Evidencias del proyecto
 
-GreenMarket uses a **layered architecture (N-Layer)** to keep the code clean and organized.
+### Herramientas utilizadas
 
-```
-src/
-├── config/         # Database and Swagger configuration
-├── controllers/    # Business logic and request handling
-├── middlewares/    # JWT authentication and role verification
-├── models/         # MongoDB schemas (Producto, Usuario)
-└── routes/         # API route definitions with Swagger docs
-```
+* Notion — Organización y documentación.
+* GitHub — Código y control de versiones.
+* GitHub Actions — Automatización.
+* Discord — Comunicación y reconocimiento.
+* UptimeRobot — Monitoreo.
+* Figma — Prototipo.
 
 ---
 
-## Main API Endpoints
+##  Resultado esperado
 
-### 🔐 Authentication
+Demostrar que una combinación de tecnología, organización, automatización, medición y reconocimiento puede mejorar el trabajo colaborativo de un equipo.
 
-#### Register user
-```
-POST /api/auth/register
-```
-Request body:
-```json
-{
-  "email": "usuario@example.com",
-  "password": "secreto123",
-  "rol": "admin"
-}
-```
-Expected response `(201 Created)`:
-```json
-{
-  "_id": "user_id",
-  "email": "usuario@example.com",
-  "rol": "admin"
-}
-```
-Error responses:
-- `401` — User already exists
-
----
-
-#### Login user
-```
-POST /api/auth/login
-```
-Request body:
-```json
-{
-  "email": "usuario@example.com",
-  "password": "secreto123"
-}
-```
-Expected response `(200 OK)`:
-```json
-{
-  "token": "JWT_TOKEN_HERE"
-}
-```
-Error responses:
-- `400` — Invalid credentials
-
----
-
-#### Get profile
-```
-GET /api/auth/perfil
-```
-> 🔒 Requires JWT token
-
-Expected response `(200 OK)`:
-```json
-{
-  "_id": "user_id",
-  "email": "usuario@example.com",
-  "rol": "admin",
-  "nombreNegocio": "Verduras El Campo",
-  "umbralStockBajo": 10,
-  "umbralStockMedio": 50
-}
-```
-
----
-
-#### Update profile
-```
-PUT /api/auth/perfil
-```
-> 🔒 Requires JWT token
-
-Request body (all fields optional):
-```json
-{
-  "nombreNegocio": "Verduras El Campo",
-  "descripcion": "Tienda de productos orgánicos",
-  "umbralStockBajo": 10,
-  "umbralStockMedio": 50
-}
-```
-
----
-
-### 📦 Products
-
-> 🔒 All product endpoints require the JWT token in the Authorization header:
-> ```
-> Authorization: Bearer JWT_TOKEN
-> ```
-
-#### Get all products
-```
-GET /api/productos
-```
-Expected response `(200 OK)`:
-```json
-[
-  {
-    "_id": "product_id",
-    "nombreProducto": "Manzana orgánica",
-    "precio": 25.5,
-    "stock": 100,
-    "nivelStock": "alto",
-    "estado": "disponible",
-    "alerta": ""
-  }
-]
-```
-
----
-
-#### Get low stock products
-```
-GET /api/productos/bajo-stock
-```
-Returns only products with `nivelStock: "bajo"` belonging to the authenticated business.
-
----
-
-#### Create product *(admin only)*
-```
-POST /api/productos
-```
-Request body:
-```json
-{
-  "nombreProducto": "Manzana orgánica",
-  "descripcion": "Manzana roja cultivada sin pesticidas",
-  "precio": 25.5,
-  "stock": 100,
-  "categoria": "frutas",
-  "productor": "Rancho El Verde",
-  "ubicacion": "Bodega A, estante 3"
-}
-```
-Expected response `(200 OK)` — the system automatically calculates `nivelStock`, `alerta`, and `estado`:
-```json
-{
-  "_id": "product_id",
-  "nombreProducto": "Manzana orgánica",
-  "stock": 100,
-  "nivelStock": "alto",
-  "estado": "disponible",
-  "alerta": ""
-}
-```
-Error responses:
-- `403` — Insufficient role (admin required)
-
----
-
-#### Update product *(admin only)*
-```
-PUT /api/productos/:id
-```
-Request body:
-```json
-{
-  "stock": 5,
-  "precio": 30
-}
-```
-The system recalculates `nivelStock` and `alerta` automatically based on the new stock value.
-
----
-
-#### Delete product *(admin only)*
-```
-DELETE /api/productos/:id
-```
-Expected response `(200 OK)`:
-```json
-{
-  "message": "Producto eliminado correctamente"
-}
-```
-
----
-
-## Smart Stock Logic 🧠
-
-One of GreenMarket's core features is its **intelligent stock level calculation**. Instead of fixed thresholds, each business defines its own limits in their profile:
-
-| Field | Default | Description |
-|-------|---------|-------------|
-| `umbralStockBajo` | 10 | Units below this = low stock alert |
-| `umbralStockMedio` | 50 | Units below this = medium stock warning |
-
-Every time a product is created or updated, the system automatically assigns:
-
-| Condition | nivelStock | estado | alerta |
-|-----------|------------|--------|--------|
-| stock = 0 | bajo | agotado | "Producto agotado" |
-| stock < umbralStockBajo | bajo | disponible | "Stock bajo, considera reabastecer pronto." |
-| stock < umbralStockMedio | medio | disponible | "Stock medio, Se recomienda realizar un pedido pronto..." |
-| stock >= umbralStockMedio | alto | disponible | "" |
-
----
-
-## Security
-
-GreenMarket uses **JSON Web Tokens (JWT)** for authentication and **role-based access control** to protect critical routes.
-
-Authentication flow:
-1. The user registers or logs in.
-2. The server generates a JWT token (expires in 1 hour).
-3. The client stores the token and sends it in subsequent requests.
-4. The `auth` middleware verifies the token before allowing access.
-5. The `checkRole` middleware additionally verifies the user's role for admin-only routes.
-
-Example request header:
-```
-Authorization: Bearer TOKEN
-```
-
-Role permissions:
-- `user` — Can view products and check stock
-- `admin` — Can create, update, and delete products
+**EcoTask — Organiza. Colabora. Avanza. 🚀**
