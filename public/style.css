@@ -1,0 +1,434 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f8f5;
+    color: #20372b;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app {
+    min-height: 100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    height: 57px;
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 30px;
+
+    border-bottom: 1px solid #e4ebe6;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #20372b;
+
+    font-size: 16px;
+}
+
+.logo span {
+    font-size: 18px;
+}
+
+.logo strong {
+    font-weight: 700;
+}
+
+
+/* =========================
+   CONTENIDO
+========================= */
+
+.contenido {
+    width: 90%;
+    max-width: 900px;
+
+    margin: 30px auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+
+/* =========================
+   SECCIONES
+========================= */
+
+.seccion h2 {
+    font-size: 14px;
+    margin-bottom: 13px;
+
+    color: #20372b;
+}
+
+
+/* =========================
+   TAREAS
+========================= */
+
+.tareas {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+
+.tarea {
+    background: #ffffff;
+
+    border: 1px solid #e1e9e3;
+
+    border-radius: 9px;
+
+    padding: 13px 13px;
+
+    min-height: 64px;
+
+    transition: 0.2s;
+}
+
+
+.tarea:hover {
+    border-color: #b8d9c4;
+    transform: translateY(-1px);
+}
+
+
+.tarea h3 {
+    font-size: 11px;
+
+    color: #20372b;
+
+    margin-bottom: 7px;
+}
+
+
+/* =========================
+   ESTADO
+========================= */
+
+.estado {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 8px;
+}
+
+
+.estado::before {
+    content: "";
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    margin-right: 5px;
+}
+
+
+/* COMPLETADA */
+
+.completada {
+    background: #e6f5eb;
+    color: #24834e;
+}
+
+.completada::before {
+    background: #16b84e;
+}
+
+
+/* EN PROGRESO */
+
+.progreso {
+    background: #fff5dc;
+    color: #9a6b00;
+}
+
+.progreso::before {
+    background: #ffc400;
+}
+
+
+/* PENDIENTE */
+
+.pendiente {
+    background: #f1f3f3;
+    color: #69736e;
+}
+
+.pendiente::before {
+    background: #cfd4d2;
+}
+
+
+/* =========================
+   RECONOCIMIENTOS
+========================= */
+
+.reconocimientos {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.reconocimiento {
+    background: #ffffff;
+
+    border: 1px solid #e1e9e3;
+
+    border-radius: 9px;
+
+    padding: 13px;
+
+    margin-bottom: 9px;
+
+    min-height: 55px;
+}
+
+
+.reconocimiento strong {
+    display: block;
+
+    color: #24834e;
+
+    font-size: 10px;
+
+    margin-bottom: 5px;
+}
+
+
+.reconocimiento p {
+    color: #75827b;
+
+    font-size: 9px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    .contenido {
+        width: 90%;
+
+        grid-template-columns: 1fr;
+
+        margin-top: 25px;
+    }
+
+    .header {
+        padding: 0 20px;
+    }
+
+}
+
+/* =========================
+   BOTÓN NUEVA TAREA
+========================= */
+
+.btn-nueva {
+    background: #278b58;
+    color: white;
+
+    border: none;
+    border-radius: 7px;
+
+    padding: 8px 13px;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-nueva:hover {
+    background: #1f7449;
+}
+
+
+/* =========================
+   TITULO TAREAS
+========================= */
+
+.titulo-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo-seccion span {
+    font-size: 9px;
+    color: #7c8881;
+}
+
+
+/* =========================
+   BOTONES DE TAREA
+========================= */
+
+.tarea-acciones {
+    margin-top: 9px;
+
+    display: flex;
+    gap: 6px;
+}
+
+.tarea-acciones button {
+    border: none;
+    background: #f1f5f2;
+
+    color: #496054;
+
+    font-size: 8px;
+
+    padding: 5px 8px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.tarea-acciones button:hover {
+    background: #dcebe2;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(20, 35, 27, 0.25);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    width: 320px;
+
+    background: white;
+
+    border: 1px solid #e1e9e3;
+
+    border-radius: 10px;
+
+    padding: 22px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+.modal-contenido h2 {
+    font-size: 16px;
+
+    margin-bottom: 15px;
+
+    color: #20372b;
+}
+
+.modal-contenido input,
+.modal-contenido select {
+    width: 100%;
+
+    padding: 10px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #dce5df;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 11px;
+}
+
+.modal-contenido input:focus,
+.modal-contenido select:focus {
+    border-color: #278b58;
+}
+
+
+/* =========================
+   ACCIONES MODAL
+========================= */
+
+.acciones {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+
+    margin-top: 5px;
+}
+
+.acciones button {
+    border: none;
+
+    padding: 8px 12px;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.btn-guardar {
+    background: #278b58;
+
+    color: white;
+}
+
+.btn-cancelar {
+    background: #eef1ef;
+
+    color: #536159;
+}
+
+
+.oculto {
+    display: none;
+}
