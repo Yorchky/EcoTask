@@ -1,6 +1,6 @@
 # 🌱 EcoTask
 
-## Startup Digital: Cultura, Herramientas e Innovación
+## Startup: Cultura, Herramientas e Innovación
 
 EcoTask es una plataforma digital diseñada para ayudar a estudiantes y equipos de trabajo a organizar actividades, administrar recursos y visualizar su progreso.
 
